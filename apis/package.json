@@ -4,11 +4,11 @@
   "type": "module",
   "scripts": {
     "postinstall": "prisma generate",
-    "dev": "nitro dev",
-    "build": "prisma generate && prisma migrate deploy && nitro build",
-    "start": "node --env-file=.env .output/server/index.mjs",
+    "dev": "sh -c 'set -a; . ../.env; set +a; nitro dev'",
+    "build": "sh -c 'set -a; . ../.env; set +a; prisma generate && prisma migrate deploy && nitro build'",
+    "start": "sh -c 'set -a; . ../.env; set +a; node .output/server/index.mjs'",
     "prisma:generate": "prisma generate",
-    "prisma:push": "prisma db push"
+    "prisma:push": "sh -c 'set -a; . ../.env; set +a; prisma db push'"
   },
   "dependencies": {
     "@prisma/client": "6.19.2",

@@ -3,9 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "dev": "next dev -p 3001",
-    "build": "next build",
-    "start": "next start -p 3001",
+    "dev": "sh -c 'set -a; . ../.env; set +a; next dev -p \"$WEBSITE_PORT\"'",
+    "build": "sh -c 'set -a; . ../.env; set +a; next build'",
+    "start": "sh -c 'set -a; . ../.env; set +a; next start -p \"$WEBSITE_PORT\"'",
     "lint": "next lint"
   },
   "dependencies": {
