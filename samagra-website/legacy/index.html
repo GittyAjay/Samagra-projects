@@ -1,0 +1,3880 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samagra Enterprises — Solar Solutions India</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #fff;
+      color: #222;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 60px;
+      height: 72px;
+      box-shadow: none !important;
+      transition: background .25s ease, box-shadow .25s ease;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-logo svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .brand-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .brand-name span {
+      display: block;
+      font-size: 8px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, .75);
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      position: relative;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #fff;
+      transition: color .2s, opacity .2s;
+      padding-bottom: 6px;
+    }
+
+    .nav-links a.active {
+      color: #FF8C00;
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #FF8C00;
+    }
+
+    .nav-cta {
+      background: #FF8C00 !important;
+      color: #fff !important;
+      padding: 11px 22px;
+      border-radius: 2px;
+      box-shadow: 0 8px 18px rgba(255, 140, 0, .35);
+    }
+
+    .nav-cta:hover {
+      background: #e07a00 !important;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+
+    .nav-toggle svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    .nav-toggle .hamburger-line {
+      stroke: #fff;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      transition: transform .2s, opacity .2s, stroke .2s;
+      transform-origin: 12px 12px;
+      stroke: #fff;
+      /* Ensure white by default on dark hero */
+    }
+
+    /* Fixed white color when not scrolled to ensure visibility on hero */
+    .nav-toggle .hamburger-line {
+      stroke: #fff;
+    }
+
+    /* Nav state on scroll */
+    .nav-scrolled {
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+    }
+
+    .nav-scrolled .brand-name {
+      color: #222;
+    }
+
+    .nav-scrolled .brand-name span {
+      color: #999;
+    }
+
+    .nav-scrolled .nav-links a {
+      color: #333;
+    }
+
+    .nav-scrolled .nav-links a:hover {
+      color: #333;
+      opacity: .85;
+    }
+
+    .nav-scrolled .nav-links a.active {
+      color: #FF8C00;
+    }
+
+    .nav-scrolled .nav-toggle .hamburger-line {
+      stroke: #222;
+    }
+
+    /* Nav open on mobile */
+    .nav-open {
+      background: #fff;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16) !important;
+    }
+
+    .nav-open .brand-name {
+      color: #222;
+    }
+
+    .nav-open .brand-name span {
+      color: #999;
+    }
+
+    .nav-open .nav-toggle .hamburger-line {
+      stroke: #222;
+    }
+
+    .nav-open .nav-toggle .line-1 {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .nav-open .nav-toggle .line-2 {
+      opacity: 0;
+    }
+
+    .nav-open .nav-toggle .line-3 {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      margin-top: 0;
+      position: relative;
+      height: 560px;
+      overflow: hidden;
+    }
+
+    .hero-slider {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center 35%;
+      background-repeat: no-repeat;
+      opacity: 0;
+      animation: heroSlider 24s linear infinite;
+    }
+
+    .slide:nth-child(1) {
+      background-image: url('assets/img1.jpg');
+      animation-delay: 0s;
+    }
+
+    .slide:nth-child(2) {
+      background-image: url('assets/img2.jpg');
+      animation-delay: 6s;
+    }
+
+    .slide:nth-child(3) {
+      background-image: url('assets/img3.jpg');
+      animation-delay: 12s;
+    }
+
+    .slide:nth-child(4) {
+      background-image: url('assets/img4.jpg');
+      animation-delay: 18s;
+    }
+
+    @keyframes heroSlider {
+      0% {
+        opacity: 0;
+        transform: scale(1.1);
+      }
+
+      5% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+
+      25% {
+        opacity: 1;
+        transform: scale(1.02);
+      }
+
+      30% {
+        opacity: 0;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0, 0, 0, .35) 0%, rgba(0, 0, 0, .08) 55%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 170px 80px 0;
+      max-width: 620px;
+    }
+
+    .hero-content h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 46px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.08;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    .hero-content p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, .92);
+      margin-bottom: 22px;
+      max-width: 420px;
+    }
+
+    .btn-orange {
+      display: inline-block;
+      padding: 11px 26px;
+      background: #FF8C00;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background .2s, transform .2s;
+    }
+
+    .btn-orange:hover {
+      background: #e07a00;
+      transform: translateY(-2px);
+    }
+
+    /* ── SHARED SECTION STYLES ── */
+    .section-tag {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #FF8C00;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+
+    .section-body {
+      font-size: 14px;
+      line-height: 1.9;
+      color: #555;
+    }
+
+    /* ─────────────────────────────────────────────
+     ORANGE FRAME IMAGES — exact match to design
+     A rounded orange border rectangle peeks out
+     from behind the photo (top-right or bottom-left)
+  ───────────────────────────────────────────── */
+
+    /* Frame peeking TOP-RIGHT (Who We Are image) */
+    .img-frame-tr {
+      position: relative;
+      overflow: visible;
+      display: inline-block;
+      /* or block */
+      /* margin: 50px 60px 60px 60px; */
+    }
+
+    .img-frame-tr::after {
+      content: '';
+      position: absolute;
+      top: -35px;
+      left: 50%;
+      right: -35px;
+      bottom: 30%;
+      border: 2.5px solid #ff9616;
+      border-radius: 14px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .img-frame-tr img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
+    }
+
+    .img-frame-bl {
+      position: relative;
+      overflow: visible;
+      display: inline-block;
+      /* margin: 50px 60px 60px 60px; */
+    }
+
+    .img-frame-bl::after {
+      content: '';
+      position: absolute;
+      top: -35px;
+      left: -35px;
+      right: 50%;
+      bottom: 30%;
+      border: 2.5px solid #FF8C00;
+      border-radius: 14px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .img-frame-bl img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
+    }
+
+    /* Vishwam image — same frame style */
+    .img-frame-tr-green::after {
+      border-color: #2ecc71;
+    }
+
+    /* ── TOMORROW FUTURE (REDESIGNED) ── */
+    #why-choose {
+      padding: 100px 70px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .tomorrow-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .tomorrow-img-petal {
+      position: relative;
+      width: 100%;
+      height: 540px;
+      border-radius: 160px 0 160px 0;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+    }
+
+    .tomorrow-img-petal img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .tomorrow-img-petal::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.2) 100%);
+    }
+
+    .tomorrow-content .section-tag {
+      color: #FF8C00;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .tomorrow-content h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #0d233a;
+      margin-bottom: 30px;
+      line-height: 1.1;
+      text-transform: capitalize;
+    }
+
+    .tomorrow-content .line {
+      width: 65px;
+      height: 4px;
+      background: #FF8C00;
+      margin-bottom: 35px;
+    }
+
+    .tomorrow-content p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #555;
+      margin-bottom: 30px;
+      max-width: 540px;
+    }
+
+    /* ── BEST PRODUCTS (REDESIGNED #WHO) ── */
+    #who {
+      padding: 100px 70px;
+      background: #fdfdfd;
+      overflow: hidden;
+    }
+
+    .best-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .best-content .section-tag {
+      color: #FF8C00;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .best-content h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #0d233a;
+      margin-bottom: 30px;
+      line-height: 1.1;
+      text-transform: capitalize;
+    }
+
+    .best-content .line {
+      width: 65px;
+      height: 4px;
+      background: #FF8C00;
+      margin-bottom: 35px;
+    }
+
+    .best-content p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #555;
+      margin-bottom: 30px;
+      max-width: 540px;
+    }
+
+    .best-img-petal {
+      position: relative;
+      width: 100%;
+      height: 540px;
+      border-radius: 0 160px 0 160px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+    }
+
+    .best-img-petal img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .best-img-petal::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.2) 100%);
+    }
+
+    .why-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    /* Divider between sections */
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: #f0f0f0;
+    }
+
+    /* ── OUR SERVICES (REDESIGNED) ── */
+    #services {
+      padding: 100px 70px;
+      background: #fdfdfd;
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .services-header h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #0d233a;
+      margin-bottom: 15px;
+    }
+
+    .services-header .line {
+      width: 60px;
+      height: 3px;
+      background: #FF8C00;
+      margin: 0 auto 20px;
+    }
+
+    .services-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .service-card {
+      background: #fff;
+      padding: 50px 30px;
+      border-radius: 4px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+      border: 1px solid #f0f0f0;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(255, 140, 0, 0.1);
+      border-color: #FF8C00;
+    }
+
+    .service-ico-petal {
+      width: 90px;
+      height: 90px;
+      background: rgba(255, 140, 0, 0.06);
+      border-radius: 25px 0 25px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      transition: background .3s, transform .3s;
+    }
+
+    .service-card:hover .service-ico-petal {
+      background: #FF8C00;
+      transform: rotate(5deg);
+    }
+
+    .service-ico-petal svg {
+      width: 40px;
+      height: 40px;
+      stroke: #FF8C00;
+      transition: stroke .3s;
+    }
+
+    .service-card:hover .service-ico-petal svg {
+      stroke: #fff;
+    }
+
+    .service-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #666;
+    }
+
+    /* ── OUR PRODUCTS (REDESIGNED) ── */
+    #products {
+      padding: 100px 70px;
+      background: #fdfdfd;
+    }
+
+    .products-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .products-header h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #0d233a;
+      margin-bottom: 15px;
+      text-transform: capitalize;
+    }
+
+    .products-header .line {
+      width: 60px;
+      height: 3px;
+      background: #FF8C00;
+      margin: 0 auto 20px;
+    }
+
+    .products-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px 30px;
+    }
+
+    .product-card {
+      background: transparent;
+      border: none;
+      position: relative;
+      transition: transform .3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .product-img {
+      height: 280px;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s;
+    }
+
+    .product-card:hover .product-img img {
+      transform: scale(1.1);
+    }
+
+    .product-body {
+      background: #fff;
+      padding: 30px 25px;
+      width: 85%;
+      margin: -50px auto 0;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07);
+      text-align: center;
+      border-radius: 4px;
+    }
+
+    .product-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .product-desc {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #777;
+      margin-bottom: 15px;
+    }
+
+    .product-meta {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #FF8C00;
+      border-top: 1px solid #f0f0f0;
+      padding-top: 15px;
+      font-weight: 700;
+    }
+
+    /* ── B2B CLIENTELE (REDESIGNED) ── */
+    #clients {
+      padding: 100px 70px;
+      background: #fff;
+    }
+
+    .clients-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .clients-header h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #0d233a;
+      margin-bottom: 15px;
+      text-transform: capitalize;
+    }
+
+    .clients-header .line {
+      width: 60px;
+      height: 3px;
+      background: #FF8C00;
+      margin: 0 auto 20px;
+    }
+
+    .clients-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .client-petal {
+      background: #fcfcfc;
+      border: 1px solid #f0f0f0;
+      padding: 30px 20px;
+      text-align: center;
+      border-radius: 40px 0 40px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      height: 100px;
+    }
+
+    .client-petal:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(255, 140, 0, 0.15);
+      border-color: #FF8C00;
+      color: #FF8C00;
+    }
+
+    @keyframes clients-scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ── LEADERSHIP (REDESIGNED) ── */
+    #leadership {
+      padding: 100px 70px;
+      background: #fff;
+    }
+
+    .experts-heading {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .experts-heading h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #0d233a;
+      margin-bottom: 15px;
+      text-transform: capitalize;
+    }
+
+    .experts-heading .line {
+      width: 60px;
+      height: 3px;
+      background: #FF8C00;
+      margin: 0 auto 25px;
+    }
+
+    .experts-heading p {
+      font-size: 14px;
+      color: #666;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .leader-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .leader-card {
+      position: relative;
+      padding-bottom: 40px;
+      width: calc(33.333% - 27px);
+      min-width: 280px;
+      max-width: 340px;
+      /* Space for the overlapping box */
+    }
+
+    .leader-img {
+      height: 380px;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 80px 0 80px 0;
+      background: #f0f0f0;
+      transition: transform 0.4s ease;
+    }
+
+    .leader-card:hover .leader-img {
+      transform: scale(1.02);
+    }
+
+    .leader-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .leader-body {
+      background: #fff;
+      padding: 20px;
+      width: 80%;
+      margin: -50px auto 0;
+      /* Overlap effect */
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+    }
+
+    .leader-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a1a1a;
+      text-transform: capitalize;
+      margin-bottom: 5px;
+    }
+
+    .leader-role {
+      font-size: 12px;
+      color: #888;
+      text-transform: capitalize;
+      font-weight: 400;
+    }
+
+    .leader-bio {
+      display: none;
+    }
+
+    /* ── READY FOR CHALLENGE (REDESIGNED) ── */
+    #challenge {
+      padding: 100px 70px;
+      background: #fdfdfd;
+    }
+
+    .challenge-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #0d233a;
+      border-radius: 120px 0 120px 0;
+      padding: 80px 70px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .challenge-container::after {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 140, 0, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .challenge-content h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 30px;
+      line-height: 1.1;
+      text-transform: capitalize;
+    }
+
+    .challenge-content p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 35px;
+    }
+
+    .challenge-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .challenge-stat-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px 30px;
+      border-radius: 40px 0 40px 0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .challenge-stat-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-5px);
+      border-color: rgba(255, 140, 0, 0.3);
+    }
+
+    .stat-number {
+      font-family: 'Oswald', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #FF8C00;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .challenge-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .challenge-cta .btn-orange {
+      box-shadow: 0 12px 24px rgba(255, 140, 0, .35);
+    }
+
+    /* ── WHY GO WITH SOLAR (REDESIGNED) ── */
+    #why-solar {
+      padding: 100px 70px;
+      background: #fff;
+      position: relative;
+      background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    .why-solar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .why-solar-heading {
+      flex: 1;
+      min-width: 350px;
+      margin: 0;
+    }
+
+    .why-solar-heading h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: #1a1a1a;
+      text-transform: capitalize;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .why-solar-heading .underline {
+      width: 80px;
+      height: 4px;
+      background: #FF8C00;
+      margin-bottom: 40px;
+    }
+
+    .why-solar-grid {
+      flex: 2;
+      min-width: 300px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      align-items: center;
+    }
+
+    .why-solar-card {
+      background: #fff;
+      padding: 30px 20px;
+      text-align: left;
+      border-radius: 60px 0 60px 0;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+      transition: transform .3s, box-shadow .3s;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      height: 240px;
+      justify-content: center;
+      border: 1px solid #f0f0f0;
+    }
+
+    .why-solar-card.central {
+      background: #FF8C00;
+      color: #fff;
+      transform: translateY(-20px);
+      box-shadow: 0 15px 45px rgba(255, 140, 0, 0.3);
+    }
+
+    .why-solar-card.central h3,
+    .why-solar-card.central p {
+      color: #fff;
+    }
+
+    .why-solar-card.central .why-solar-icon svg {
+      stroke: #fff;
+    }
+
+    .why-solar-card:nth-child(2),
+    .why-solar-card:nth-child(5) {
+      transform: translateY(40px);
+    }
+
+    .why-solar-icon {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .why-solar-icon svg {
+      width: 45px;
+      height: 45px;
+      stroke: #FF8C00;
+    }
+
+    .why-solar-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: capitalize;
+      color: #1a1a1a;
+      line-height: 1.3;
+    }
+
+    .why-solar-card p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .why-solar-card .explore-btn {
+      display: none;
+      /* Removed as per new design */
+    }
+
+    /* ── AWARDS (REDESIGNED) ── */
+    #awards {
+      padding: 100px 70px;
+      background: #fdfdfd;
+      overflow: hidden;
+    }
+
+    .awards-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .awards-header h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #0d233a;
+      margin-bottom: 15px;
+      text-transform: capitalize;
+    }
+
+    .awards-header .line {
+      width: 65px;
+      height: 4px;
+      background: #FF8C00;
+      margin: 0 auto 25px;
+    }
+
+    .awards-header p {
+      font-size: 14px;
+      color: #666;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* Hero / Featured Award */
+    .aw-hero {
+      max-width: 1200px;
+      margin: 0 auto 100px;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .aw-hero-img {
+      position: relative;
+      width: 100%;
+      height: 540px;
+      border-radius: 0 160px 0 160px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+    }
+
+    .aw-hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .aw-hero-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.2) 100%);
+    }
+
+    .aw-hero-body {
+      padding: 0;
+    }
+
+    .aw-hero-badge {
+      display: inline-block;
+      color: #FF8C00;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .aw-hero-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 15px;
+    }
+
+    .aw-hero-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .aw-hero-name span {
+      color: #FF8C00;
+    }
+
+    .aw-hero-desc {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .aw-hero-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .aw-hero-body::before {
+      display: none;
+    }
+
+    /* Remove the emoji */
+
+    /* Bottom: Cards row */
+    .aw-cards-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .aw-card {
+      background: transparent;
+      padding: 0;
+      position: relative;
+      transition: transform .3s;
+    }
+
+    .aw-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .aw-card-img {
+      height: 240px;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .aw-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s;
+    }
+
+    .aw-card-ico {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
+      background: #FF8C00;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+      z-index: 2;
+    }
+
+    .aw-card-ico svg {
+      width: 24px;
+      height: 24px;
+      fill: #fff;
+    }
+
+    .aw-card-body {
+      background: #fff;
+      padding: 25px 20px;
+      width: 90%;
+      margin: -40px auto 0;
+      position: relative;
+      z-index: 3;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      text-align: center;
+    }
+
+    .aw-card-year {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #FF8C00;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .aw-card-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+      line-height: 1.3;
+      text-transform: capitalize;
+    }
+
+    .aw-card-desc {
+      font-size: 12px;
+      line-height: 1.7;
+      color: #777;
+      margin-bottom: 12px;
+    }
+
+    .aw-card-org {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #aaa;
+      text-transform: uppercase;
+      border-top: 1px solid #f0f0f0;
+      padding-top: 12px;
+    }
+
+    .aw-pill {
+      padding: 5px 14px;
+      border: 1.5px solid #FF8C00;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #FF8C00;
+      border-radius: 2px;
+    }
+
+    /* Bottom: 4 cards in a row */
+    .aw-cards-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-bottom: 32px;
+    }
+
+    .aw-card {
+      background: #fff;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+      border-top: 3px solid transparent;
+      border-radius: 6px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .06);
+    }
+
+    .aw-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, .11);
+      border-top-color: #FF8C00;
+    }
+
+    .aw-card-img {
+      height: 140px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .aw-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(.75) saturate(1.1);
+      transition: transform .5s, filter .4s;
+    }
+
+    .aw-card:hover .aw-card-img img {
+      transform: scale(1.06);
+      filter: brightness(.9) saturate(1.2);
+    }
+
+    /* Orange icon badge overlaid on image */
+    .aw-card-ico {
+      position: absolute;
+      bottom: -18px;
+      left: 20px;
+      width: 40px;
+      height: 40px;
+      background: #FF8C00;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 4px 12px rgba(255, 140, 0, .35);
+      z-index: 2;
+      border: 2px solid #fff;
+    }
+
+    .aw-card-body {
+      padding: 26px 22px 22px;
+      flex: 1;
+    }
+
+    .aw-card-year {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #FF8C00;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .aw-card-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .aw-card-desc {
+      font-size: 12px;
+      line-height: 1.75;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .aw-card-org {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #bbb;
+      text-transform: uppercase;
+      border-top: 1px solid #f0f0f0;
+      padding-top: 10px;
+      margin-top: auto;
+    }
+
+    /* Certs / membership strip */
+    .certs-strip {
+      background: #FF8C00;
+      padding: 34px 36px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .certs-strip-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      padding-right: 40px;
+      border-right: 1px solid rgba(255, 255, 255, .3);
+      margin-right: 40px;
+      white-space: nowrap;
+      line-height: 1.5;
+    }
+
+    .certs-strip-items {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      align-items: center;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .cert-sit {
+      text-align: center;
+    }
+
+    .cert-sico {
+      font-size: 26px;
+      display: block;
+      margin-bottom: 4px;
+      filter: brightness(10);
+    }
+
+    .cert-snm {
+      font-size: 10px;
+      color: rgba(255, 255, 255, .85);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* ── VISHWAM (REDESIGNED) ── */
+    #vishwam {
+      padding: 100px 70px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .vishwam-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .vishwam-content .section-tag {
+      color: #2ecc71;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .vishwam-content h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #0d233a;
+      margin-bottom: 30px;
+      line-height: 1.1;
+      text-transform: capitalize;
+    }
+
+    .vishwam-content p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #555;
+      margin-bottom: 30px;
+      max-width: 540px;
+    }
+
+    .vishwam-stats {
+      display: flex;
+      gap: 50px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .vishwam-stats .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .vishwam-stats .stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1;
+      color: #2ecc71;
+    }
+
+    .vishwam-stats .stat-label {
+      font-size: 11px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+
+    .btn-green {
+      display: inline-block;
+      padding: 14px 30px;
+      background: #2ecc71;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background .2s, transform .2s;
+    }
+
+    .btn-green:hover {
+      background: #27ae60;
+      transform: translateY(-2px);
+    }
+
+    .vishwam-img-petal {
+      position: relative;
+      width: 100%;
+      height: 540px;
+      border-radius: 0 160px 0 160px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+    }
+
+    .vishwam-img-petal img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .vishwam-img-petal::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.2) 100%);
+    }
+
+    /* ── BOOK (REDESIGNED) ── */
+    #book {
+      padding: 100px 70px;
+      background: #fdfdfd;
+      overflow: hidden;
+    }
+
+    .book-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .book-img-petal {
+      position: relative;
+      width: 100%;
+      height: 540px;
+      border-radius: 160px 0 160px 0;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+      background: #eee;
+      /* Fallback color */
+    }
+
+    .book-img-petal img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      font-size: 0;
+      /* Hide alt text if image fails but maintain accessible alt */
+    }
+
+    .book-img-petal::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.2) 100%);
+    }
+
+    .book-content .section-tag {
+      color: #FF8C00;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .book-content h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #0d233a;
+      margin-bottom: 30px;
+      line-height: 1.1;
+      text-transform: capitalize;
+    }
+
+    .book-content p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #555;
+      margin-bottom: 35px;
+      max-width: 500px;
+    }
+
+    .book-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .book-input {
+      width: 100%;
+      padding: 16px 20px;
+      background: #fff;
+      border: 1px solid #eee;
+      color: #333;
+      font-size: 14px;
+      font-family: 'Open Sans', sans-serif;
+      outline: none;
+      transition: all .3s;
+      border-radius: 4px;
+    }
+
+    .book-input:focus {
+      border-color: #FF8C00;
+      background: #fff;
+      box-shadow: 0 5px 15px rgba(255, 140, 0, 0.08);
+    }
+
+    .book-submit {
+      padding: 16px 40px;
+      background: #FF8C00;
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all .3s;
+    }
+
+    .book-submit:hover {
+      background: #e07a00;
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #f1f1f1;
+      padding: 56px 70px 0;
+      border-top: 1px solid #e2e2e2;
+    }
+
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 50px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #e6e6e6;
+    }
+
+    .footer-brand-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1a1a1a;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .footer-brand-sub {
+      font-size: 9px;
+      color: #888;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand-desc {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.9;
+      margin-bottom: 12px;
+    }
+
+    .footer-contact-line {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .footer-col-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a1a1a;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      font-size: 13px;
+      color: #666;
+      transition: color .2s;
+    }
+
+    .footer-links a:hover {
+      color: #FF8C00;
+    }
+
+    .social-icons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .social-icon {
+      width: 34px;
+      height: 34px;
+      background: #FF8C00;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 700;
+      transition: transform .2s, background .2s;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.1);
+      background: #e07a00;
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+    }
+
+    /* ── REVEAL ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .fade-up.on {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-left {
+      opacity: 0;
+      transform: translateX(-28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .fade-left.on {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .fade-right {
+      opacity: 0;
+      transform: translateX(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .fade-right.on {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .d1 {
+      transition-delay: .12s
+    }
+
+    .d2 {
+      transition-delay: .22s
+    }
+
+    .d3 {
+      transition-delay: .32s
+    }
+
+    .d4 {
+      transition-delay: .42s
+    }
+
+    /* ── TOAST NOTIFICATION ── */
+    .toast-notification {
+      position: fixed;
+      bottom: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #FF8C00;
+      color: #fff;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3);
+      z-index: 1000;
+      transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toast-notification.show {
+      bottom: 40px;
+    }
+
+    @media(max-width:900px) {
+
+      .tomorrow-grid,
+      .best-grid,
+      .why-grid,
+      .vishwam-grid,
+      .aw-hero,
+      .book-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid,
+      .why-solar-grid,
+      .aw-cards-row,
+      .products-grid,
+      .leader-grid,
+      .clients-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      nav {
+        padding: 14px 20px;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1001;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        right: 18px;
+        left: 18px;
+        background: #fff;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 18px 18px;
+        border-radius: 6px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity .2s, transform .2s;
+      }
+
+      .nav-links a {
+        color: #333;
+      }
+
+      .nav-links a.active {
+        color: #FF8C00;
+      }
+
+      .nav-open .nav-links {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      #hero,
+      #hero,
+      #who,
+      #why-choose,
+      #vishwam,
+      #awards,
+      #book,
+      #services,
+      #products,
+      #clients,
+      #leadership,
+      #challenge,
+      #why-solar,
+      #awards,
+      #vishwam,
+      #book {
+        padding: 50px 20px;
+      }
+
+      .hero-content {
+        padding: 110px 20px 0;
+        text-align: center;
+        max-width: 100%;
+      }
+
+      .hero-content h1 {
+        font-size: 26px;
+        line-height: 1.2;
+      }
+
+      .hero-content p {
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .tomorrow-img-petal,
+      .best-img-petal,
+      .vishwam-img-petal,
+      .aw-hero-img,
+      .book-img-petal {
+        height: 380px;
+      }
+
+      .who-content h2 {
+        font-size: 28px;
+      }
+
+      .why-solar-heading,
+      .why-solar-grid {
+        min-width: 100%;
+      }
+
+      .why-solar-heading h2 {
+        font-size: 32px;
+        text-align: center;
+      }
+
+      .why-solar-heading .underline {
+        margin: 0 auto 30px;
+      }
+
+      .why-solar-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .aw-hero-img {
+        height: 260px;
+        border-radius: 30px 0 30px 0;
+      }
+
+      .aw-hero-body {
+        margin-left: 0;
+        margin-top: -30px;
+        padding: 25px 20px;
+        text-align: center;
+        border-radius: 0 0 30px 0;
+      }
+
+      .aw-hero-name {
+        font-size: 22px;
+      }
+
+      .challenge-container {
+        grid-template-columns: 1fr;
+        padding: 40px 25px;
+        text-align: center;
+        border-radius: 60px 0 60px 0;
+      }
+
+      .challenge-content h2 {
+        font-size: 26px;
+        line-height: 1.2;
+      }
+
+      .challenge-container {
+        padding: 40px 20px;
+      }
+
+      .why-solar-card,
+      .why-solar-card.central,
+      .why-solar-card:nth-child(2),
+      .why-solar-card:nth-child(5) {
+        transform: translateY(0) !important;
+      }
+    }
+
+    @media(max-width:580px) {
+
+      .services-grid,
+      .why-solar-grid,
+      .aw-cards-row,
+      .products-grid,
+      .leader-grid,
+      .clients-grid,
+      .footer-grid,
+      .best-grid,
+      .vishwam-grid,
+      .aw-hero,
+      .book-grid,
+      .challenge-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .tomorrow-img-petal,
+      .best-img-petal,
+      .vishwam-img-petal,
+      .aw-hero-img,
+      .book-img-petal {
+        height: 320px;
+        border-radius: 80px 0 80px 0;
+      }
+
+      .book-grid {
+        gap: 50px;
+      }
+
+      .aw-card-img {
+        height: 200px;
+      }
+
+      .aw-card-body {
+        width: 100%;
+        margin-top: 10px;
+        box-shadow: none;
+        border: 1px solid #f0f0f0;
+      }
+
+      .certs-strip {
+        padding: 30px 20px;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .certs-strip-label {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        margin-right: 0;
+        padding-right: 0;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+      }
+
+      .certs-strip-items {
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .book-form {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .book-input,
+      .book-submit {
+        width: 100% !important;
+      }
+
+      .footer-grid {
+        text-align: center;
+      }
+
+      .footer-grid>div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .footer-brand-name {
+        justify-content: center;
+      }
+    }
+
+    /* ── CONSULTATION SECTION ── */
+    #consultation {
+      padding: 100px 70px;
+      background: #fff;
+    }
+
+    .consultation-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .consultation-image {
+      position: relative;
+      border-radius: 120px 0 120px 0;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+      height: 540px;
+    }
+
+    .consultation-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .consultation-form-card {
+      background: #fff;
+      padding: 45px;
+      border-radius: 4px;
+      box-shadow: 0 15px 45px rgba(0,0,0,0.06);
+      border: 1px solid #f0f0f0;
+    }
+
+    #calculator {
+      padding: 100px 70px 40px;
+      background: #ffffff;
+    }
+
+    .calculator-section-shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 54px;
+      align-items: stretch;
+    }
+
+    .calculator-copy h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 64px;
+      line-height: 0.98;
+      color: #0d233a;
+      margin-bottom: 22px;
+      max-width: 700px;
+    }
+
+    .calculator-copy h2 span {
+      color: #FF8C00;
+    }
+
+    .calculator-copy p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #6f6b63;
+      max-width: 500px;
+      margin-bottom: 22px;
+    }
+
+    .calculator-visual {
+      margin-top: 58px;
+      height: 470px;
+      border-radius: 108px 0 0 0;
+      overflow: hidden;
+      box-shadow: 0 24px 55px rgba(13, 35, 58, 0.1);
+    }
+
+    .calculator-visual img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .calculator-card {
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid #ece9e2;
+      border-radius: 8px;
+      padding: 30px 30px 28px;
+      box-shadow: 0 14px 34px rgba(13, 35, 58, 0.06);
+    }
+
+    .calculator-card::before {
+      display: none;
+    }
+
+    .calculator-card h3 {
+      position: relative;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 18px;
+      line-height: 1.35;
+      font-weight: 400;
+      color: #2a2a2a;
+      margin-bottom: 18px;
+    }
+
+    .calculator-card p {
+      position: relative;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #6f6b63;
+      margin-bottom: 18px;
+    }
+
+    .calculator-tabs {
+      display: flex;
+      background: #ffffff;
+      padding: 8px;
+      border-radius: 6px;
+      margin-bottom: 30px;
+      border: 1px solid #e8e8e8;
+      align-items: stretch;
+      min-height: 78px;
+    }
+
+    .calculator-tab {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 2px;
+      cursor: pointer;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      transition: all 0.25s ease;
+      color: #999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.2;
+    }
+
+    .calculator-tab.active {
+      background: #FF8C00;
+      color: #ffffff;
+    }
+
+    .calculator-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      margin-bottom: 24px;
+    }
+
+    .calculator-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      margin-bottom: 14px;
+      color: #1f1f1f;
+    }
+
+    .calculator-label span {
+      color: #FF8C00;
+    }
+
+    .calculator-input {
+      width: 100%;
+      min-height: 74px;
+      padding: 0 28px;
+      border: 1px solid #e9e9e9;
+      border-radius: 6px;
+      font-size: 17px;
+      color: #444;
+      outline: none;
+      background: #ffffff;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .calculator-input:focus {
+      border-color: #FF8C00;
+      box-shadow: 0 8px 18px rgba(255, 140, 0, 0.08);
+    }
+
+    .calculator-field-hint {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #8e8e8e;
+      line-height: 1.6;
+    }
+
+    .calculator-results {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    .calculator-result {
+      background: #ffffff;
+      border: 1px solid #ece9e2;
+      border-radius: 6px;
+      padding: 20px 18px;
+      box-shadow: 0 8px 18px rgba(13, 35, 58, 0.04);
+    }
+
+    .calculator-result span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #8b5e34;
+      margin-bottom: 8px;
+    }
+
+    .calculator-result strong {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px;
+      line-height: 1;
+      color: #0d233a;
+      margin-bottom: 6px;
+    }
+
+    .calculator-result small {
+      display: block;
+      color: #666;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .calculator-note {
+      position: relative;
+      margin-top: 20px;
+      padding: 15px 16px;
+      border-radius: 6px;
+      background: rgba(255, 140, 0, 0.05);
+      border: 1px solid rgba(255, 140, 0, 0.1);
+      color: #5c5347;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .calculator-cta {
+      margin-top: 22px;
+      width: 100%;
+      min-height: 58px;
+      border-radius: 4px;
+      border: none;
+      background: #0d233a;
+      color: #ffffff;
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .calculator-cta:hover {
+      background: #17314d;
+      transform: translateY(-2px);
+    }
+
+    .consultation-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 26px 0 22px;
+      color: #8e8e8e;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .consultation-divider::before,
+    .consultation-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #ececec;
+    }
+
+    .consultation-tabs {
+      display: flex;
+      background: #fdfdfd;
+      padding: 5px;
+      border-radius: 4px;
+      margin-bottom: 35px;
+      border: 1px solid #eee;
+      align-items: stretch;
+      min-height: 50px;
+    }
+
+    .consultation-tab {
+      flex: 1;
+      padding: 10px 15px;
+      border-radius: 2px;
+      cursor: pointer;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      color: #999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.2;
+    }
+
+    .consultation-tab.active {
+      background: #FF8C00;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(255,140,0,0.2);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+    }
+
+    .form-label span {
+      color: #FF8C00;
+      margin-left: 2px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 16px 20px;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      font-size: 14px;
+      font-family: 'Open Sans', sans-serif;
+      transition: all 0.3s;
+      outline: none;
+      background: #fdfdfd;
+    }
+
+    .form-control:focus {
+      border-color: #FF8C00;
+      background: #fff;
+      box-shadow: 0 5px 15px rgba(255,140,0,0.08);
+    }
+
+    .bill-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #1a1a1a;
+      margin-bottom: 18px;
+    }
+
+    .bill-info-btn {
+      width: 18px;
+      height: 18px;
+      background: #f0f0f0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #aaa;
+      cursor: help;
+    }
+
+    .bill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .bill-option {
+      padding: 14px 10px;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #777;
+      background: #fdfdfd;
+    }
+
+    .bill-option.active {
+      border-color: #FF8C00;
+      background: #fff;
+      color: #FF8C00;
+      box-shadow: 0 5px 15px rgba(255,140,0,0.1);
+    }
+
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 35px;
+      cursor: pointer;
+    }
+
+    .form-check input {
+      appearance: none;
+      -webkit-appearance: none;
+      margin-top: 4px;
+      width: 16px;
+      height: 16px;
+      border: 1px solid #FF8C00;
+      border-radius: 3px;
+      background: #fff;
+      display: inline-grid;
+      place-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .form-check input::before {
+      content: "";
+      width: 4px;
+      height: 8px;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(45deg) scale(0);
+      transform-origin: center;
+      transition: transform 0.15s ease-in-out;
+    }
+
+    .form-check input:checked {
+      background: #FF8C00;
+      border-color: #FF8C00;
+    }
+
+    .form-check input:checked::before {
+      transform: rotate(45deg) scale(1);
+    }
+
+    .form-check label {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .form-check a {
+      color: #FF8C00;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px 0;
+      background: #FF8C00;
+      color: #fff;
+      border-radius: 2px;
+      border: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: normal;
+      box-shadow: 0 6px 15px rgba(255,140,0,0.2);
+    }
+
+    .btn-submit:hover {
+      background: #e07a00;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(255,140,0,0.3);
+    }
+
+    .consultation-next-step {
+      margin-top: 24px;
+      padding: 22px;
+      border-radius: 18px;
+      background: #0d233a;
+      color: #fff;
+    }
+
+    .consultation-next-step[hidden] {
+      display: none;
+    }
+
+    .consultation-next-step h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .consultation-next-step p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 18px;
+    }
+
+    .next-step-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .next-step-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .next-step-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .next-step-btn.primary {
+      background: #FF8C00;
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(255, 140, 0, 0.2);
+    }
+
+    .next-step-btn.secondary {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .next-step-btn.ghost {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .consultation-header {
+      margin-bottom: 50px;
+    }
+
+    .consultation-header h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #0d233a;
+      margin-bottom: 25px;
+      line-height: 1.1;
+      text-transform: none;
+    }
+
+    .consultation-header h2 span {
+      color: #FF8C00;
+    }
+
+    .consultation-header p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.8;
+      max-width: 480px;
+    }
+
+    @media(max-width: 1024px) {
+      #calculator {
+        padding: 70px 40px 20px;
+      }
+      .calculator-section-shell {
+        grid-template-columns: 1fr;
+      }
+      .calculator-copy h2 {
+        font-size: 50px;
+      }
+      .calculator-visual {
+        height: 380px;
+        border-radius: 72px 0 0 0;
+      }
+      .consultation-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+      .calculator-results {
+        grid-template-columns: 1fr;
+      }
+      #consultation {
+        padding: 60px 40px;
+      }
+    }
+    @media(max-width: 600px) {
+       #calculator {
+        padding: 55px 20px 10px;
+      }
+      #consultation {
+        padding: 50px 20px;
+      }
+      .calculator-copy h2 {
+        font-size: 42px;
+      }
+      .calculator-tabs {
+        min-height: auto;
+      }
+      .calculator-tab {
+        font-size: 12px;
+        letter-spacing: 1.2px;
+        padding: 14px 10px;
+      }
+      .calculator-card {
+        padding: 22px 20px 24px;
+      }
+      .calculator-input {
+        min-height: 62px;
+        padding: 0 18px;
+        font-size: 16px;
+      }
+      .calculator-visual {
+        height: 300px;
+        margin-top: 34px;
+        border-radius: 48px 0 0 0;
+      }
+      .consultation-header h2 {
+        font-size: 32px;
+      }
+      .consultation-form-card {
+        padding: 25px;
+      }
+      .calculator-card h3,
+      .consultation-next-step h3 {
+        font-size: 24px;
+      }
+      .bill-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .next-step-actions {
+        flex-direction: column;
+      }
+      .next-step-btn {
+        width: 100%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav>
+    <a href="#" class="brand">
+      <div class="brand-logo">
+        <img src="assets/logo.png" alt="Samagra Enterprises Logo" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="brand-name">Samagra Enterprises<span>Solar Solutions India</span></div>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <line class="hamburger-line line-1" x1="4" y1="7" x2="20" y2="7"></line>
+        <line class="hamburger-line line-2" x1="4" y1="12" x2="20" y2="12"></line>
+        <line class="hamburger-line line-3" x1="4" y1="17" x2="20" y2="17"></line>
+      </svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#why-choose">About Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#vishwam">Foundation</a></li>
+      <li><a href="#consultation" class="nav-cta">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-slider">
+      <div class="slide"></div>
+      <div class="slide"></div>
+      <div class="slide"></div>
+      <div class="slide"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>The Sun Pays Your Bills. Let It.</h1>
+      <p>Samagra Enterprises delivers high-performance solar solutions across India — cutting your electricity costs
+        from Day 1, and your carbon footprint forever.</p>
+      <a href="#calculator" class="btn-orange">Calculate Your Savings</a>
+    </div>
+  </section>
+
+  <!-- ── BEST PRODUCTS (REDESIGNED #WHO) ── -->
+  <section id="who">
+    <div class="best-grid">
+      <!-- LEFT: text content -->
+      <div class="best-content fade-left">
+        <span class="section-tag">Quality Excellence</span>
+        <h2 class="section-title">We are the Best In Products & Service Solutions</h2>
+        <div class="line"></div>
+        <p class="section-body">Samagra Enterprises is among the leading renewable energy solutions providers in India.
+          We sell quality solar products like solar panels, solar water heaters, and complete solar systems. We provide
+          end-to-end solar energy solutions across all of India.</p>
+        <p>Our engineering precision ensures that every product we deliver meets the highest standards of durability and
+          performance, securing your energy future for decades to come.</p>
+      </div>
+
+      <!-- RIGHT: image petal -->
+      <div class="best-img-petal fade-right d1">
+        <img src="assets/installation.jpg" alt="Solar panel installation team">
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (() => {
+      const nav = document.querySelector('nav');
+      const toggle = document.querySelector('.nav-toggle');
+      const links = [...document.querySelectorAll('.nav-links a')];
+      if (!nav) return;
+      const onScroll = () => {
+        const y = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        nav.classList.toggle('nav-scrolled', y > 8);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('load', onScroll);
+      window.addEventListener('resize', onScroll);
+      onScroll();
+
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          const isOpen = nav.classList.toggle('nav-open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        links.forEach(link => {
+          link.addEventListener('click', () => {
+            nav.classList.remove('nav-open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+        window.addEventListener('click', (e) => {
+          if (!nav.classList.contains('nav-open')) return;
+          if (!nav.contains(e.target)) {
+            nav.classList.remove('nav-open');
+            toggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    })();
+  </script>
+
+  <!-- ── TOMORROW FUTURE (REDESIGNED) ── -->
+  <section id="why-choose">
+    <div class="tomorrow-grid">
+      <!-- LEFT: image petal -->
+      <div class="tomorrow-img-petal fade-left">
+        <img src="https://images.unsplash.com/photo-1624397640148-949b1732bb0a?w=1000&q=80"
+          alt="Solar specialists working together">
+      </div>
+
+      <!-- RIGHT: text content -->
+      <div class="tomorrow-content fade-right d1">
+        <span class="section-tag">Empowering Change</span>
+        <h2>We are Structuring a Tomorrow Future</h2>
+        <div class="line"></div>
+        <p>Samagra Enterprises is among India's leading renewable energy solutions providers. We are quality-driven and
+          are
+          reshaping how sustainable energy is harnessed across the nation. With projects spanning various sectors, we
+          ensure
+          efficiency, reliability, and top-tier engineering in every rooftop installation.</p>
+        <p>Our commitment goes beyond technology; we focus on building a future where clean energy is accessible and
+          affordable
+          for every home and enterprise in India.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── OUR SERVICES (REDESIGNED) ── -->
+  <section id="services">
+    <div class="services-header fade-up">
+      <p
+        style="color:#FF8C00; letter-spacing:3px; text-transform:uppercase; font-size:12px; font-weight:700; margin-bottom:15px;">
+        Expertise</p>
+      <h2>Comprehensive Solar Services</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card fade-up d1">
+        <div class="service-ico-petal">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z" />
+          </svg>
+        </div>
+        <h3>Residential Solar</h3>
+        <p>Cut your electricity bills by up to 90% with custom-designed rooftop solar systems for your home.</p>
+      </div>
+
+      <div class="service-card fade-up d2">
+        <div class="service-ico-petal">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+          </svg>
+        </div>
+        <h3>Commercial Solar</h3>
+        <p>High-capacity solar EPC solutions tailored for factories, hospitals, and educational institutions.</p>
+      </div>
+
+      <div class="service-card fade-up d3">
+        <div class="service-ico-petal">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        </div>
+        <h3>Industrial EPC</h3>
+        <p>End-to-end engineering, procurement, and construction for utility-scale solar power plants.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── OUR PRODUCTS (REDESIGNED) ── -->
+  <section id="products">
+    <div class="products-header fade-up">
+      <h2>Built For Performance</h2>
+      <div class="line"></div>
+    </div>
+    <div class="products-grid">
+      <div class="product-card fade-up d1">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&q=80"
+            alt="High efficiency solar panels">
+        </div>
+        <div class="product-body">
+          <div class="product-title">Solar Panels</div>
+          <div class="product-desc">High‑efficiency mono‑PERC modules for residential and commercial rooftops.</div>
+          <div class="product-meta">25‑Year Warranty</div>
+        </div>
+      </div>
+      <div class="product-card fade-up d2">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&q=80"
+            alt="Solar inverter systems">
+        </div>
+        <div class="product-body">
+          <div class="product-title">Solar Inverters</div>
+          <div class="product-desc">Advanced grid‑tie and hybrid smart inverters with mobile monitoring apps.</div>
+          <div class="product-meta">10‑Year Warranty</div>
+        </div>
+      </div>
+      <div class="product-card fade-up d3">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1611365892117-00ac5ef43c90?w=800&q=80" alt="Solar water heater">
+        </div>
+        <div class="product-body">
+          <div class="product-title">Solar Water Heaters</div>
+          <div class="product-desc">Durable, high‑capacity systems for reliable hot water in any weather.</div>
+          <div class="product-meta">15‑Year Durability</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── B2B CLIENTELE (REDESIGNED) ── -->
+  <section id="clients">
+    <div class="clients-header fade-up">
+      <h2>Trusted By Industry Leaders</h2>
+      <div class="line"></div>
+    </div>
+    <div class="clients-grid">
+      <div class="client-petal fade-up d1">Indian Railways</div>
+      <div class="client-petal fade-up d2">UP Power Corp</div>
+      <div class="client-petal fade-up d3">L&amp;T Infra</div>
+      <div class="client-petal fade-up d4">Tata Projects</div>
+      <div class="client-petal fade-up d1">NHPC</div>
+      <div class="client-petal fade-up d2">BHEL</div>
+      <div class="client-petal fade-up d3">Adani Green</div>
+      <div class="client-petal fade-up d4">Airtel</div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── OUR LEADERSHIP (OUR EXPERTS) ── -->
+  <section id="leadership">
+    <div class="experts-heading fade-up">
+      <h2>Our Experts</h2>
+      <div class="line"></div>
+      <p>Credibly innovate granular internal or organic sources.</p>
+    </div>
+    <div class="leader-grid">
+      <!-- Expert 1 -->
+      <div class="leader-card fade-up d1">
+        <div class="leader-img">
+          <img
+            src="https://media.licdn.com/dms/image/v2/C4E03AQFppgJjRN_xVg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1596858322711?e=1775088000&v=beta&t=WvV6K3Z4CrOSA_RrgLT2Y83pCIWyTOadB7UV8_067Dc"
+            alt="Saskia Daly - Founder">
+        </div>
+        <div class="leader-body">
+          <div class="leader-name">U P (Ushapati Tripathi) Tripathi</div>
+          <div class="leader-role">Founder</div>
+        </div>
+      </div>
+
+      <!-- Expert 2 -->
+      <div class="leader-card fade-up d2">
+        <div class="leader-img">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80"
+            alt="Shayne Wallace - MD Manager">
+        </div>
+        <div class="leader-body">
+          <div class="leader-name">Person 2</div>
+          <div class="leader-role">MD Manager</div>
+        </div>
+      </div>
+
+      <!-- Expert 3 -->
+      <div class="leader-card fade-up d3">
+        <div class="leader-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Niko Anderson - CEO">
+        </div>
+        <div class="leader-body">
+          <div class="leader-name">Person 3</div>
+          <div class="leader-role">CEO</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── READY FOR CHALLENGE (REDESIGNED) ── -->
+  <section id="challenge">
+    <div class="challenge-container fade-up">
+      <div class="challenge-content">
+        <span class="section-tag" style="color:rgba(255,255,255,0.8);">Expertise</span>
+        <h2>We Are Always Ready For A Challenge</h2>
+        <p>With a legacy of reliability and engineering excellence, we specialize in delivering large-scale solar
+          projects that push boundaries. From high-altitude deployments to industrial-grade energy farms, we power
+          India’s future.</p>
+        <a href="#consultation" class="btn-orange">Free Consultation</a>
+      </div>
+      <div class="challenge-stats">
+        <div class="challenge-stat-card fade-up d1">
+          <span class="stat-number">9000+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="challenge-stat-card fade-up d2">
+          <span class="stat-number">500k+</span>
+          <span class="stat-label">Supplied</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── WHY GO WITH SOLAR ── -->
+  <section id="why-solar">
+    <div class="why-solar-container">
+      <div class="why-solar-heading fade-left">
+        <h2>Why Go With<br>Solar Energy?</h2>
+        <div class="underline"></div>
+        <a href="#consultation" class="btn-orange">View All Services</a>
+      </div>
+
+      <div class="why-solar-grid">
+        <!-- Card 1 -->
+        <div class="why-solar-card fade-up d1">
+          <div class="why-solar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <path d="M9 12l2 2 4-4" />
+            </svg>
+          </div>
+          <h3>Secure Energy Solutions</h3>
+          <p>Credibly innovate granular internal or organic sources.</p>
+        </div>
+
+        <!-- Card 2 (Central/Orange) -->
+        <div class="why-solar-card central fade-up d2">
+          <div class="why-solar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+              <line x1="12" y1="22.08" x2="12" y2="12" />
+            </svg>
+          </div>
+          <h3>Solar Power Offerings</h3>
+          <p>Credibly innovate granular internal or organic sources.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="why-solar-card fade-up d3">
+          <div class="why-solar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+            </svg>
+          </div>
+          <h3>Efficient Automation</h3>
+          <p>Credibly innovate granular internal or organic sources.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="why-solar-card fade-up d4">
+          <div class="why-solar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+            </svg>
+          </div>
+          <h3>Smart Grid Solutions</h3>
+          <p>Credibly innovate granular internal or organic sources.</p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="why-solar-card fade-up d1">
+          <div class="why-solar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <h3>Customer Support</h3>
+          <p>Credibly innovate granular internal or organic sources.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AWARDS & ACHIEVEMENTS (REDESIGNED) ── -->
+  <section id="awards">
+    <div class="awards-header fade-up">
+      <p>Our Recognition</p>
+      <h2>Awards & Achievements</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="aw-hero">
+      <div class="aw-hero-img fade-left">
+        <img src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=1200&q=80"
+          alt="Award ceremony solar energy">
+      </div>
+      <div class="aw-hero-body fade-right d1">
+        <span class="aw-hero-badge">Excellence In Solar EPC</span>
+        <div class="aw-hero-tag">Ministry of New & Renewable Energy, India | 2024</div>
+        <div class="aw-hero-name">Solar Company<br><span>of the Year</span></div>
+        <p class="aw-hero-desc">Awarded for excellence in solar EPC project delivery, achieving the highest MW
+          installation benchmark in Uttar Pradesh for FY 2023–24 with zero safety incidents.</p>
+        <div class="aw-hero-tags">
+          <span class="aw-pill">MNRE Certified</span>
+          <span class="aw-pill">EPC Excellence</span>
+          <span class="aw-pill">UP Solar Leader</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="awards-inner">
+      <!-- 4 Award Cards Row -->
+      <div class="aw-cards-row">
+        <div class="aw-card fade-up d1">
+          <div class="aw-card-img">
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=75"
+              alt="Solar innovation award">
+          </div>
+          <div class="aw-card-body">
+            <div class="aw-card-year">2023</div>
+            <div class="aw-card-name">Solar Innovation Award</div>
+            <p class="aw-card-desc">Recognized for hybrid microgrid solutions in 40+ villages.</p>
+            <div class="aw-card-org">India Energy Forum</div>
+          </div>
+        </div>
+
+        <div class="aw-card fade-up d2">
+          <div class="aw-card-img">
+            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=75"
+              alt="Green business award">
+            <div class="aw-card-ico">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM12 7l2 2-4-4 2-2z" />
+              </svg>
+            </div>
+          </div>
+          <div class="aw-card-body">
+            <div class="aw-card-year">2023</div>
+            <div class="aw-card-name">Green Business Excellence</div>
+            <p class="aw-card-desc">Top 10 Greenest Enterprises in North India.</p>
+            <div class="aw-card-org">CII Industry</div>
+          </div>
+        </div>
+
+        <div class="aw-card fade-up d3">
+          <div class="aw-card-img">
+            <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600&q=75" alt="MSME solar champion">
+            <div class="aw-card-ico">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+            </div>
+          </div>
+          <div class="aw-card-body">
+            <div class="aw-card-year">2022</div>
+            <div class="aw-card-name">MSME Solar Champion</div>
+            <p class="aw-card-desc">Awarded for scaling solar adoption among UP MSMEs.</p>
+            <div class="aw-card-org">Govt. of Uttar Pradesh</div>
+          </div>
+        </div>
+
+        <div class="aw-card fade-up d4">
+          <div class="aw-card-img">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=75" alt="Customer choice award">
+            <div class="aw-card-ico">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+              </svg>
+            </div>
+          </div>
+          <div class="aw-card-body">
+            <div class="aw-card-year">2022</div>
+            <div class="aw-card-name">Customer Choice Award</div>
+            <p class="aw-card-desc">Voted #1 for after-sales support in Solar Water Heating.</p>
+            <div class="aw-card-org">Solar Trust India</div>
+          </div>
+        </div>
+
+      </div><!-- /aw-cards-row -->
+
+      <!-- Certifications strip -->
+      <div class="certs-strip fade-up d2"
+        style="background:#FF8C00; padding:34px 36px; display:flex; align-items:center; gap:0; flex-wrap:wrap; margin-top:32px; border-radius:10px;">
+        <div class="certs-strip-label"
+          style="font-family:'Oswald',sans-serif; font-size:14px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#fff; padding-right:40px; border-right:1px solid rgba(255,255,255,.3); margin-right:40px; white-space:nowrap; line-height:1.5;">
+          Our<br>Certifications</div>
+        <div class="certs-strip-items"
+          style="display:flex; gap:28px; flex-wrap:wrap; align-items:center; flex:1; justify-content:space-between;">
+          <div class="cert-sit"><span class="cert-sico"
+              style="font-size:26px; display:block; margin-bottom:4px; filter:brightness(10);">🏅</span><span
+              class="cert-snm"
+              style="font-size:10px; color:rgba(255,255,255,.85); letter-spacing:1.5px; text-transform:uppercase; font-weight:700;">ISO
+              9001:2015</span></div>
+          <div class="cert-sit"><span class="cert-sico"
+              style="font-size:26px; display:block; margin-bottom:4px; filter:brightness(10);">⚡</span><span
+              class="cert-snm"
+              style="font-size:10px; color:rgba(255,255,255,.85); letter-spacing:1.5px; text-transform:uppercase; font-weight:700;">MNRE
+              Empanelled</span></div>
+          <div class="cert-sit"><span class="cert-sico"
+              style="font-size:26px; display:block; margin-bottom:4px; filter:brightness(10);">🌱</span><span
+              class="cert-snm"
+              style="font-size:10px; color:rgba(255,255,255,.85); letter-spacing:1.5px; text-transform:uppercase; font-weight:700;">BIS
+              Certified</span></div>
+          <div class="cert-sit"><span class="cert-sico"
+              style="font-size:26px; display:block; margin-bottom:4px; filter:brightness(10);">🛡️</span><span
+              class="cert-snm"
+              style="font-size:10px; color:rgba(255,255,255,.85); letter-spacing:1.5px; text-transform:uppercase; font-weight:700;">TERI
+              Partner</span></div>
+          <div class="cert-sit"><span class="cert-sico"
+              style="font-size:26px; display:block; margin-bottom:4px; filter:brightness(10);">🤝</span><span
+              class="cert-snm"
+              style="font-size:10px; color:rgba(255,255,255,.85); letter-spacing:1.5px; text-transform:uppercase; font-weight:700;">CII
+              Member</span></div>
+        </div>
+      </div>
+  </section>
+
+  <!-- ── VISHWAM FOUNDATION (REDESIGNED) ── -->
+  <section id="vishwam">
+    <div class="vishwam-grid">
+      <div class="vishwam-content fade-left">
+        <span class="section-tag">Social Initiative</span>
+        <h2>Vishwam Foundation — Illuminating Lives</h2>
+        <p>Beyond our core business, Vishwam Foundation is our heartbeat. We are dedicated to bringing clean energy to
+          off-grid rural communities, empowering the next generation through digital education, and leading
+          environmental restoration projects across Uttar Pradesh.</p>
+
+        <div class="vishwam-stats">
+          <div class="stat-item">
+            <span class="stat-num">120+</span>
+            <span class="stat-label">Villages Lit</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">3500+</span>
+            <span class="stat-label">Children Empowered</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">50k+</span>
+            <span class="stat-label">Trees Planted</span>
+          </div>
+        </div>
+
+        <a href="#book" class="btn-green">Support The Foundation</a>
+      </div>
+
+      <div class="vishwam-img-petal fade-right d1">
+        <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1000&q=80"
+          alt="Children in solar-powered school India">
+      </div>
+    </div>
+  </section>
+
+  <section id="calculator" class="fade-up">
+    <div class="calculator-section-shell">
+      <div class="calculator-copy">
+        <span class="section-tag">Price Calculator</span>
+        <h2>See your <span>solar price</span> before you schedule.</h2>
+        <p>Tell us your bill and usable roof space to get a clean instant estimate. Once it looks right, continue with the consultation request and we will guide you to the next step.</p>
+        <div class="calculator-visual">
+          <img src="assets/consultation_hero.png" alt="Samagra solar advisor with customer consultation">
+        </div>
+      </div>
+
+      <div class="calculator-card">
+        <h3>Get A Detailed Price Estimate</h3>
+
+        <div class="calculator-grid">
+          <div class="form-group">
+            <label class="calculator-label" for="monthlyBillInput">Monthly Current Bill <span>*</span></label>
+            <input type="number" class="calculator-input" id="monthlyBillInput" min="500" step="100" value="3200" placeholder="Enter your monthly bill in INR">
+            <div class="calculator-field-hint">Your bill helps us estimate the right system size and annual savings.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="calculator-label" for="roofAreaInput">Usable Roof Area <span>*</span></label>
+            <input type="number" class="calculator-input" id="roofAreaInput" min="80" step="10" value="450" placeholder="Enter available roof area in sq. ft.">
+            <div class="calculator-field-hint">We use this to check how much of your expected load can fit on the roof.</div>
+          </div>
+        </div>
+
+        <div class="calculator-results">
+          <div class="calculator-result">
+            <span>Recommended System</span>
+            <strong id="estimatedSystemSize">3.0 kW</strong>
+            <small id="estimatedMonthlyOffset">Covers most of your current monthly usage.</small>
+          </div>
+
+          <div class="calculator-result">
+            <span>Estimated Project Price</span>
+            <strong id="estimatedProjectPrice">₹1.35L</strong>
+            <small id="estimatedPriceNote">Indicative net project cost after standard assumptions.</small>
+          </div>
+
+          <div class="calculator-result">
+            <span>Approx. Annual Savings</span>
+            <strong id="estimatedAnnualSavings">₹31,000</strong>
+            <small id="estimatedSavingsNote">Calculated from your current monthly bill profile.</small>
+          </div>
+
+          <div class="calculator-result">
+            <span>Payback Timeline</span>
+            <strong id="estimatedPayback">4.4 yrs</strong>
+            <small id="estimatedPaybackNote">A quick estimate your consultant can refine for your site.</small>
+          </div>
+        </div>
+
+        <div class="calculator-note" id="calculatorNote">
+          This instant estimate will be attached to your consultation request so our team can start with a more accurate recommendation.
+        </div>
+
+        <button type="button" class="calculator-cta" id="calculatorConsultationCta">Continue To Consultation</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FREE CONSULTATION SECTION (NEW) ── -->
+  <section id="consultation" class="fade-up">
+    <div class="consultation-container">
+      <div class="consultation-left">
+        <div class="consultation-header">
+          <span class="section-tag">Free Consultation</span>
+          <h2>Schedule a <span>FREE session</span> with us today!</h2>
+          <p>Tell us a bit about your energy requirements and our experts will reach out with a tailored solar blueprint.</p>
+        </div>
+        <div class="consultation-image">
+          <img src="assets/consultation_hero.png" alt="Samagra Solar Consultation Team">
+        </div>
+      </div>
+
+      <div class="consultation-right">
+        <div class="consultation-form-card">
+          <div class="consultation-divider">Get A Detailed Consultation</div>
+
+          <div class="consultation-tabs" id="consultationTabs">
+            <div class="consultation-tab active" data-type="residential">Residential</div>
+            <div class="consultation-tab" data-type="housing">Housing Society</div>
+            <div class="consultation-tab" data-type="commercial">Commercial</div>
+          </div>
+
+          <form id="consultationForm">
+            <div class="form-group">
+              <label class="form-label" id="nameLabel">Homeowner Name<span>*</span></label>
+              <input type="text" class="form-control" id="nameInput" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email Address<span>*</span></label>
+              <input type="email" class="form-control" id="emailInput" placeholder="Enter your email address" required>
+            </div>
+
+            <!-- Extra field for Commercial -->
+            <div class="form-group" id="orgGroup" style="display: none;">
+              <label class="form-label">Organization Name<span>*</span></label>
+              <input type="text" class="form-control" id="orgInput" placeholder="Enter company name">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" id="phoneLabel">WhatsApp Primary<span>*</span></label>
+              <input type="tel" class="form-control" id="phoneInput" placeholder="Enter your WhatsApp number" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" id="pinLabel">Area Pin Code<span>*</span></label>
+              <input type="text" class="form-control" id="pinInput" placeholder="Enter your pin code" required>
+            </div>
+
+            <!-- Extra field for Housing Society -->
+            <div class="form-group" id="aptGroup" style="display: none;">
+              <label class="form-label">Total Apartments<span>*</span></label>
+              <input type="number" class="form-control" id="aptInput" placeholder="Number of units in society">
+            </div>
+
+            <div class="bill-label">
+              <span id="billLabel">Monthly Current Bill</span> <span>*</span>
+              <div class="bill-info-btn" title="Your electricity bill helps us suggest the right solar capacity">i</div>
+            </div>
+
+            <div class="bill-grid" id="billGrid">
+              <div class="bill-option" data-value="<1500">Less than ₹1500</div>
+              <div class="bill-option" data-value="1500-2500">₹1500 - ₹2500</div>
+              <div class="bill-option active" data-value="2500-4000">₹2500 - ₹4000</div>
+              <div class="bill-option" data-value="4000-8000">₹4000 - ₹8000</div>
+              <div class="bill-option" data-value=">8000">More than ₹8000</div>
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" id="agree" required checked>
+              <label for="agree">I agree to Samagra Enterprises's <a href="#">terms of service</a> & <a href="#">privacy policy</a></label>
+            </div>
+
+            <button type="submit" class="btn-submit">Submit Details</button>
+          </form>
+
+          <div id="consultationNextStep" class="consultation-next-step" hidden>
+            <h3>Would you like to schedule the next step now?</h3>
+            <p id="consultationNextStepMessage">Your request is in. Choose what feels easiest and our team will take it forward from there.</p>
+            <div class="next-step-actions">
+              <a id="scheduleCallLink" class="next-step-btn primary" href="tel:+919868961616">Call +91 98689 61616</a>
+              <a id="whatsAppLink" class="next-step-btn secondary" href="https://wa.me/919868961616" target="_blank" rel="noreferrer">WhatsApp Our Team</a>
+              <button type="button" id="closeNextStep" class="next-step-btn ghost">Maybe Later</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const fieldConfig = {
+        residential: {
+          name: { label: 'Homeowner Name', placeholder: 'Enter your full name' },
+          phone: { label: 'WhatsApp Primary', placeholder: 'Enter your WhatsApp number' },
+          pin: { label: 'Area Pin Code', placeholder: 'Enter your pin code' },
+          bill: 'Monthly Current Bill',
+          showOrg: false,
+          showApt: false
+        },
+        housing: {
+          name: { label: 'Society Official Name', placeholder: 'Enter society name' },
+          phone: { label: 'Society Contact Number', placeholder: 'Enter official mobile' },
+          pin: { label: 'Society Location PIN', placeholder: 'Enter area pin' },
+          bill: 'Common Area Utility Bill',
+          showOrg: false,
+          showApt: true
+        },
+        commercial: {
+          name: { label: 'Business Representative', placeholder: 'Enter contact person' },
+          phone: { label: 'Company WhatsApp', placeholder: 'Enter business contact' },
+          pin: { label: 'Industry Zone PIN', placeholder: 'Enter business location pin' },
+          bill: 'Enterprise Energy Bill',
+          showOrg: true,
+          showApt: false
+        }
+      };
+
+      const nameLabel = document.getElementById('nameLabel');
+      const nameInput = document.getElementById('nameInput');
+      const phoneLabel = document.getElementById('phoneLabel');
+      const phoneInput = document.getElementById('phoneInput');
+      const pinLabel = document.getElementById('pinLabel');
+      const pinInput = document.getElementById('pinInput');
+      const billLabel = document.getElementById('billLabel');
+      const orgGroup = document.getElementById('orgGroup');
+      const orgInput = document.getElementById('orgInput');
+      const aptGroup = document.getElementById('aptGroup');
+      const aptInput = document.getElementById('aptInput');
+
+      // Tab switching logic
+      const tabs = document.querySelectorAll('.consultation-tab');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
+          const type = tab.getAttribute('data-type');
+          const config = fieldConfig[type];
+
+          // Update Labels and Placeholders
+          nameLabel.innerHTML = config.name.label + '<span>*</span>';
+          nameInput.placeholder = config.name.placeholder;
+          
+          phoneLabel.innerHTML = config.phone.label + '<span>*</span>';
+          phoneInput.placeholder = config.phone.placeholder;
+          
+          pinLabel.innerHTML = config.pin.label + '<span>*</span>';
+          pinInput.placeholder = config.pin.placeholder;
+          
+          billLabel.innerText = config.bill;
+
+          // Toggle visibility and requirements
+          orgGroup.style.display = config.showOrg ? 'block' : 'none';
+          orgInput.required = config.showOrg;
+          
+          aptGroup.style.display = config.showApt ? 'block' : 'none';
+          aptInput.required = config.showApt;
+        });
+      });
+
+      // Bill option selection
+      const options = document.querySelectorAll('.bill-option');
+      options.forEach(opt => {
+        opt.addEventListener('click', () => {
+          options.forEach(o => o.classList.remove('active'));
+          opt.classList.add('active');
+        });
+      });
+
+      // Form submission
+      const form = document.getElementById('consultationForm');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (typeof showToast === 'function') {
+           const btn = form.querySelector('.btn-submit');
+           showToast(btn);
+           form.reset();
+           // Reset dynamic visibility and labels
+           tabs[0].click(); 
+           // Reset options
+           options.forEach(o => o.classList.remove('active'));
+           options[2].classList.add('active');
+        }
+      });
+    });
+  </script>
+
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+          <div class="brand-logo" style="width:30px;height:30px; border-radius: 5px; overflow: hidden;">
+            <img src="assets/logo.png" alt="Samagra Enterprises Logo"
+              style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div>
+            <div class="footer-brand-name">Samagra Enterprises</div>
+            <div class="footer-brand-sub">Solar Solutions India</div>
+          </div>
+        </div>
+        <p class="footer-brand-desc">Professional solar service and quality products. Serving India since 2012 with
+          clean, renewable energy solutions across 28+ states.</p>
+        <div class="footer-contact-line">📧 info@samagraenterprises.in</div>
+        <div class="footer-contact-line">📞+91 9868961616</div>
+        <div class="footer-contact-line">📍 Lucknow, Uttar Pradesh, India</div>
+      </div>
+      <div>
+        <div class="footer-col-title">About</div>
+        <ul class="footer-links">
+          <li><a href="#">Team</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Service</a></li>
+          <li><a href="#">Mission &amp; Vision</a></li>
+          <li><a href="#">Career</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <ul class="footer-links">
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Customer Service</a></li>
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Subsidy Guide</a></li>
+          <li><a href="#">Warranty</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Follow Us</div>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/up.tripathi.9/" target="_blank" class="social-icon">f</a>
+          <a href="https://www.linkedin.com/in/rightmajay?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            target="_blank" class="social-icon">in</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">Copyright © 2025 Samagra Enterprises. All Rights Reserved.</div>
+  </footer>
+
+  <!-- ── TOAST NOTIFICATION ── -->
+  <div id="toast" class="toast-notification">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+    Thanks, we recorded your request!
+  </div>
+
+  <script>
+    function showToast(btn) {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+
+      // Clear inputs
+      btn.parentElement.querySelectorAll('input').forEach(i => i.value = '');
+
+      // Hide toast after 3 seconds
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+  </script>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el => obs.observe(el));
+
+  </script>
+  <script>
+    (() => {
+      const sections = [...document.querySelectorAll('section[id]')];
+      const links = [...document.querySelectorAll('.nav-links a[href^="#"]:not(.nav-cta)')];
+      if (!sections.length || !links.length) return;
+
+      const setActive = () => {
+        const y = window.scrollY + 120;
+        let currentId = sections[0].id;
+        for (const section of sections) {
+          if (y >= section.offsetTop) currentId = section.id;
+        }
+        links.forEach(link => {
+          const isActive = link.getAttribute('href') === `#${currentId}`;
+          link.classList.toggle('active', isActive);
+        });
+      };
+
+      window.addEventListener('scroll', setActive, { passive: true });
+      window.addEventListener('load', setActive);
+      window.addEventListener('resize', setActive);
+      setActive();
+    })();
+  </script>
+</body>
+
+</html>

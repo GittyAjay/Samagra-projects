@@ -1,0 +1,20 @@
+{
+  "name": "samagra-solar-sales-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "postinstall": "prisma generate",
+    "dev": "nitro dev",
+    "build": "prisma generate && prisma migrate deploy && nitro build",
+    "preview": "nitro preview",
+    "prisma:generate": "prisma generate",
+    "prisma:push": "prisma db push"
+  },
+  "dependencies": {
+    "@prisma/client": "6.19.2",
+    "firebase-admin": "^13.7.0",
+    "nitro": "^3.0.0-beta.4",
+    "nodemailer": "^8.0.4",
+    "prisma": "6.19.2"
+  }
+}
