@@ -6,7 +6,7 @@
     "postinstall": "prisma generate",
     "dev": "nitro dev",
     "build": "prisma generate && prisma migrate deploy && nitro build",
-    "preview": "nitro preview",
+    "start": "node --env-file=.env .output/server/index.mjs",
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push"
   },

@@ -37,11 +37,6 @@ export function SiteInteractions() {
     const estimatedSavingsNote = document.getElementById('estimatedSavingsNote');
     const estimatedPaybackNote = document.getElementById('estimatedPaybackNote');
     const calculatorNote = document.getElementById('calculatorNote');
-    const nextStepPanel = document.getElementById('consultationNextStep') as HTMLElement | null;
-    const nextStepMessage = document.getElementById('consultationNextStepMessage');
-    const scheduleCallLink = document.getElementById('scheduleCallLink') as HTMLAnchorElement | null;
-    const whatsAppLink = document.getElementById('whatsAppLink') as HTMLAnchorElement | null;
-    const closeNextStep = document.getElementById('closeNextStep') as HTMLButtonElement | null;
     const calculatorConsultationCta = document.getElementById('calculatorConsultationCta') as HTMLButtonElement | null;
 
     const fieldConfig = {
@@ -110,10 +105,6 @@ export function SiteInteractions() {
       residential: 18000,
     };
 
-    const businessPhone = '+91 98689 61616';
-    const businessPhoneLink = 'tel:+919868961616';
-    const businessWhatsAppBase = 'https://wa.me/919868961616';
-
     type EstimateSnapshot = {
       monthlyBill: number;
       roofArea: number;
@@ -161,6 +152,12 @@ export function SiteInteractions() {
 
     const roundToHalf = (value: number) => Math.max(1, Math.round(value * 2) / 2);
 
+    const normalizeIndianPhone = (value: string) => value.replace(/[^\d+]/g, '').trim();
+    const normalizeIndianPin = (value: string) => value.replace(/\D/g, '').slice(0, 6);
+
+    const isValidIndianMobileNumber = (value: string) => /^(?:\+91|91)?[6-9]\d{9}$/.test(value.replace(/\s+/g, ''));
+    const isValidIndianPinCode = (value: string) => /^[1-9][0-9]{5}$/.test(value);
+
     const getActiveType = (): ConsultationType =>
       (tabs.find((tab) => tab.classList.contains('active'))?.dataset.type as ConsultationType | undefined) ??
       'residential';
@@ -174,10 +171,6 @@ export function SiteInteractions() {
       options.forEach((option) => {
         option.classList.toggle('active', option.dataset.value === bucket);
       });
-    };
-
-    const hideNextStepPanel = () => {
-      nextStepPanel?.setAttribute('hidden', 'hidden');
     };
 
     const scrollToConsultation = () => {
@@ -425,8 +418,15 @@ export function SiteInteractions() {
 
     monthlyBillInput?.addEventListener('input', updateCalculatorEstimate);
     roofAreaInput?.addEventListener('input', updateCalculatorEstimate);
-    closeNextStep?.addEventListener('click', hideNextStepPanel);
     calculatorConsultationCta?.addEventListener('click', scrollToConsultation);
+    phoneInput?.addEventListener('input', () => {
+      phoneInput.setCustomValidity('');
+      phoneInput.value = normalizeIndianPhone(phoneInput.value);
+    });
+    pinInput?.addEventListener('input', () => {
+      pinInput.setCustomValidity('');
+      pinInput.value = normalizeIndianPin(pinInput.value);
+    });
 
     const onSubmit = async (event: Event) => {
       event.preventDefault();
@@ -438,7 +438,27 @@ export function SiteInteractions() {
         showToast('The enquiry form is not ready yet. Please refresh and try again.', true);
         return;
       }
-      hideNextStepPanel();
+
+      const normalizedPhone = normalizeIndianPhone(phoneInput.value);
+
+      if (!isValidIndianMobileNumber(normalizedPhone)) {
+        phoneInput.setCustomValidity('Enter a valid Indian mobile number, like 9876543210 or +919876543210.');
+        phoneInput.reportValidity();
+        return;
+      }
+
+      const normalizedPin = normalizeIndianPin(pinInput.value);
+
+      if (!isValidIndianPinCode(normalizedPin)) {
+        pinInput.setCustomValidity('Enter a valid 6-digit Indian PIN code.');
+        pinInput.reportValidity();
+        return;
+      }
+
+      phoneInput.setCustomValidity('');
+      pinInput.setCustomValidity('');
+      phoneInput.value = normalizedPhone;
+      pinInput.value = normalizedPin;
 
       button.disabled = true;
       button.textContent = 'Submitting...';
@@ -482,32 +502,7 @@ export function SiteInteractions() {
           throw new Error(payload?.statusMessage || payload?.message || 'Could not submit your enquiry.');
         }
 
-        const leadId = payload?.lead?.id?.trim();
-        const whatsappMessage = encodeURIComponent(
-          `Hello Samagra team, I just submitted a consultation request${
-            leadId ? ` (${leadId})` : ''
-          } and would like to schedule the next step for the ${latestEstimate.recommendedKw.toFixed(1)} kW estimate.`
-        );
-
-        if (nextStepMessage) {
-          nextStepMessage.textContent = `Your request${leadId ? ` (${leadId})` : ''} is in. If you want, you can call or WhatsApp us right now to lock the next step for your ${latestEstimate.recommendedKw.toFixed(
-            1
-          )} kW estimate.`;
-        }
-
-        if (scheduleCallLink) {
-          scheduleCallLink.href = businessPhoneLink;
-          scheduleCallLink.textContent = `Schedule By Calling ${businessPhone}`;
-        }
-
-        if (whatsAppLink) {
-          whatsAppLink.href = `${businessWhatsAppBase}?text=${whatsappMessage}`;
-        }
-
-        nextStepPanel?.removeAttribute('hidden');
-        nextStepPanel?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-        showToast('Estimate submitted. You can schedule the next step below.');
+        showToast('Thanks, we received your request and will contact you soon.');
         form.reset();
         setActiveType('residential');
         if (monthlyBillInput) {
@@ -539,7 +534,6 @@ export function SiteInteractions() {
       form?.removeEventListener('submit', onSubmit);
       monthlyBillInput?.removeEventListener('input', updateCalculatorEstimate);
       roofAreaInput?.removeEventListener('input', updateCalculatorEstimate);
-      closeNextStep?.removeEventListener('click', hideNextStepPanel);
       calculatorConsultationCta?.removeEventListener('click', scrollToConsultation);
       observer?.disconnect();
     };

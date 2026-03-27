@@ -3620,12 +3620,12 @@
 
             <div class="form-group">
               <label class="form-label" id="phoneLabel">WhatsApp Primary<span>*</span></label>
-              <input type="tel" class="form-control" id="phoneInput" placeholder="Enter your WhatsApp number" required>
+              <input type="tel" class="form-control" id="phoneInput" placeholder="Enter your WhatsApp number" inputmode="numeric" maxlength="14" required>
             </div>
 
             <div class="form-group">
               <label class="form-label" id="pinLabel">Area Pin Code<span>*</span></label>
-              <input type="text" class="form-control" id="pinInput" placeholder="Enter your pin code" required>
+              <input type="text" class="form-control" id="pinInput" placeholder="Enter your pin code" inputmode="numeric" maxlength="6" required>
             </div>
 
             <!-- Extra field for Housing Society -->
@@ -3654,16 +3654,6 @@
 
             <button type="submit" class="btn-submit">Submit Details</button>
           </form>
-
-          <div id="consultationNextStep" class="consultation-next-step" hidden>
-            <h3>Would you like to schedule the next step now?</h3>
-            <p id="consultationNextStepMessage">Your request is in. Choose what feels easiest and our team will take it forward from there.</p>
-            <div class="next-step-actions">
-              <a id="scheduleCallLink" class="next-step-btn primary" href="tel:+919868961616">Call +91 98689 61616</a>
-              <a id="whatsAppLink" class="next-step-btn secondary" href="https://wa.me/919868961616" target="_blank" rel="noreferrer">WhatsApp Our Team</a>
-              <button type="button" id="closeNextStep" class="next-step-btn ghost">Maybe Later</button>
-            </div>
-          </div>
         </div>
       </div>
     </div>

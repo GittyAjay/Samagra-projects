@@ -1,0 +1,17 @@
+{
+  "name": "samagra-workspace",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm run build:api && npm run build:web",
+    "build:api": "npm --prefix apis run build",
+    "build:web": "API_BASE_URL=http://localhost:3000/api NEXT_PUBLIC_API_BASE_URL=http://localhost:3000/api npm --prefix samagra-website run build",
+    "dev": "sh -c 'trap \"kill 0\" EXIT; npm run dev:api & npm run dev:web & wait'",
+    "dev:api": "npm --prefix apis run dev",
+    "dev:web": "API_BASE_URL=http://localhost:3000/api NEXT_PUBLIC_API_BASE_URL=http://localhost:3000/api npm --prefix samagra-website run dev",
+    "start": "sh -c 'trap \"kill 0\" EXIT; npm run start:api & npm run start:web & wait'",
+    "start:api": "npm --prefix apis run start",
+    "start:web": "API_BASE_URL=http://localhost:3000/api NEXT_PUBLIC_API_BASE_URL=http://localhost:3000/api npm --prefix samagra-website run start",
+    "dev:mobile": "npm --prefix mobile run start"
+  }
+}

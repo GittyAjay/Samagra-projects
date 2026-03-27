@@ -3130,77 +3130,6 @@
       box-shadow: 0 10px 25px rgba(255,140,0,0.3);
     }
 
-    .consultation-next-step {
-      margin-top: 24px;
-      padding: 22px;
-      border-radius: 18px;
-      background: #0d233a;
-      color: #fff;
-    }
-
-    .consultation-next-step[hidden] {
-      display: none;
-    }
-
-    .consultation-next-step h3 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 28px;
-      line-height: 1.1;
-      margin-bottom: 12px;
-    }
-
-    .consultation-next-step p {
-      font-size: 14px;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 18px;
-    }
-
-    .next-step-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .next-step-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 18px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
-      border: none;
-      cursor: pointer;
-    }
-
-    .next-step-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .next-step-btn.primary {
-      background: #FF8C00;
-      color: #fff;
-      box-shadow: 0 10px 25px rgba(255, 140, 0, 0.2);
-    }
-
-    .next-step-btn.secondary {
-      background: rgba(255, 255, 255, 0.12);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-
-    .next-step-btn.ghost {
-      background: transparent;
-      color: rgba(255, 255, 255, 0.78);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-
     .consultation-header {
       margin-bottom: 50px;
     }
@@ -3352,11 +3281,5 @@
       .bill-option {
         padding: 12px 8px;
         font-size: 11px;
-      }
-      .next-step-actions {
-        flex-direction: column;
-      }
-      .next-step-btn {
-        width: 100%;
       }
     }
