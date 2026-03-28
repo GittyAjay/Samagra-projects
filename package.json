@@ -9,7 +9,8 @@
     "dev": "sh -c 'trap \"kill 0\" EXIT; npm run dev:api & npm run dev:web & wait'",
     "dev:api": "npm --prefix apis run dev",
     "dev:web": "npm --prefix samagra-website run dev",
-    "start": "sh -c 'trap \"kill 0\" EXIT; npm run start:api & npm run start:web & wait'",
+    "start": "npm run build && npm run start:services",
+    "start:services": "sh -c 'trap \"kill 0\" EXIT; npm run start:api & npm run start:web & wait'",
     "start:api": "npm --prefix apis run start",
     "start:web": "npm --prefix samagra-website run start",
     "dev:mobile": "npm --prefix mobile run start"

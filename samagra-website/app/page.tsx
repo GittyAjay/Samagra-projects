@@ -3,6 +3,8 @@ import path from 'path';
 
 import { SiteInteractions } from './site-interactions';
 
+export const dynamic = 'force-dynamic';
+
 function getLegacyMarkup() {
   const filePath = path.join(process.cwd(), 'legacy', 'index.html');
   const html = readFileSync(filePath, 'utf8');
